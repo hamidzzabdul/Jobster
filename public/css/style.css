@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Poppins:wght@300;400;500;700;800&display=swap');
+
+:root{
+    --primary-color: #3b82f6;
+    --primary-font: 'Lexend', sans-serif;
+    --secondary-font: 'Poppins', sans-serif;
+    --text-color: #102a43;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #f0f4f8;
+}
+
+.nav{
+    width: 100%;
+    padding: 2rem 5rem;
+}
+main{
+    width: 90%;
+    height: calc(70vh - 2rem);
+    margin: 0 auto;
+    margin-top: -3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding:0 2rem;
+    column-gap: 5rem;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info> h1{
+    font-family: Roboto Condensed,Sans-Serif;
+    letter-spacing: 1px;
+    font-size: 3.052rem;
+    text-transform: capitalize;
+    color: var(--text-color);
+}
+
+.header>span{
+    color: var(--primary-color);
+}
+
+.subheading{
+    font-family: var(--secondary-font);
+    font-size: .785rem;
+    line-height: 1.6rem;
+    color: #5a658c;
+}
+
+.login{
+    width: 200px;
+    border: none;
+    background-color: var(--primary-color);
+    color: #ffff;
+    font-size: 1.1rem;
+    font-family: var(--primary-font);
+    padding: .75rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 300ms ease;
+    text-transform: capitalize;
+}
+.login:hover{
+    transform: translateY(-4px);
+}
+
+
+.hero-img{
+    width: 100%;
+}
