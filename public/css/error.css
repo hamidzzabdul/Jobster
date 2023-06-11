@@ -16,19 +16,21 @@
 body{
     font-family: var(--primary-font);
     background-color: beige;
+    position: relative;
 }
 .alert-container{
     width: 300px;
     height: 70px;
-    margin: 20px auto;
     padding: 1rem 0;
     background-color: #fff;
     border-radius: 5px;
     display: flex;
     align-items: center;
-    position: relative;
-    top: -200px;
-    transition: all 800ms ease;
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: top 800ms ease;
     cursor: pointer;
 }
 
@@ -42,7 +44,7 @@ body{
 }
 
 .active{
-    top: 0px;
+  top: 0;
 }
 
 

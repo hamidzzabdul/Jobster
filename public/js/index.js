@@ -1,3 +1,7 @@
+// imports
+
+import { login,logout } from "./login";
+
 // dashboard
 const dashboard = document.querySelector(".nav-bar");
 const hamburger = document.querySelector(".hamburger");
@@ -39,7 +43,6 @@ if (dashboard) {
     } else {
       item.classList.remove("active");
     }
-
   });
 }
 
@@ -64,15 +67,29 @@ if (registerbtn) {
 }
 
 const alertContainer = document.querySelector(".alert-container");
-const line = document.querySelector(".line")
+const line = document.querySelector(".line");
 
-    alertContainer.classList.add('active')
-    setTimeout(() => {
-      line.style.animation = ""; // Remove the animation
-      line.style.display = "none";
-    }, 4000);
-    line.style.display = "block";
-    setTimeout(() => {
-      alertContainer.classList.remove('active')
-    }, 4000);
+if(alertContainer){
+  setTimeout(() => {
+    line.style.animation = ""; // Remove the animation
+    line.style.display = "none";
+  }, 4000);
+  line.style.display = "block";
+}
 
+
+const loginForm  = document.querySelector('.login-form')
+
+
+if(loginForm) {
+  loginForm.addEventListener('submit', e=> {
+    e.preventDefault()
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+    login(email, password)
+  })
+}
+
+const logoutBtn = document.querySelector('.logout-btn')
+
+if(logoutBtn) logoutBtn.addEventListener('click', logout)
