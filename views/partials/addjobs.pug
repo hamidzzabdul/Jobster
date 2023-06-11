@@ -1,0 +1,31 @@
+extends ../dashboard 
+
+block content 
+    #content
+        .add-job#content     
+            h1.title Add Job 
+            form.add-job-form
+                label(for="postion") 
+                    span Position 
+                    input(type="text")
+                label(for="company") 
+                    span company
+                    input(type="text")
+                label(for="job-location") 
+                    span Job Location 
+                    input(type="text")
+                label(for="status") 
+                    span Status 
+                    select(name="status") 
+                        option(disabled selected) status 
+                        option(value="pending") pending
+                        option(value="interview") interview
+                label(for="job type") 
+                    span Job Type 
+                    select(name="type") 
+                        option(disabled selected) type  
+                        option(value="full-time") Full-time 
+                        option(value="internship") Internship
+                .btn-container 
+                    button.clear-btn(type="button") clear 
+                    button.submit-btn(type="submit") Submit

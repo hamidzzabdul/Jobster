@@ -69,7 +69,11 @@ main{
     border-radius: 5px;
     cursor: pointer;
     transition: transform 300ms ease;
+}
+.login>a{
+    text-decoration: none;
     text-transform: capitalize;
+    color: #ffff;
 }
 .login:hover{
     transform: translateY(-4px);

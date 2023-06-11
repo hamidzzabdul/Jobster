@@ -1,0 +1,90 @@
+[
+  {
+    "post": "Software Engineer",
+    "companyName": "Oaknet Business",
+    "city": "Nairobi",
+    "status": "Actively recruiting",
+    "jobType": "Full time",
+    "description": "Oaknet Business in Nairobi is actively recruiting for a full-time Software Engineer position. Join our team and contribute to the development and maintenance of our software projects. We are seeking talented individuals with strong programming skills and a passion for problem-solving."
+  },
+  {
+    "post": "Electrician",
+    "companyName": "Spark Electric",
+    "city": "Nyeri",
+    "status": "Actively recruiting",
+    "jobType": "Full time",
+    "description": "Spark Electric is actively recruiting full-time Electricians in Nyeri. As an Electrician, you will be responsible for installing, maintaining, and repairing electrical systems. Join our team and apply your expertise in providing quality electrical services."
+  },
+  {
+    "post": "Plumber",
+    "companyName": "Flow Plumbing",
+    "city": "Mombasa",
+    "status": "Active",
+    "jobType": "Part-time",
+    "description": "Flow Plumbing is currently hiring for part-time Plumbers in Mombasa. If you have experience in handling plumbing installations and repairs, join our team and assist our customers with their plumbing needs on a flexible schedule."
+  },
+  {
+    "post": "Welder",
+    "companyName": "Solid Welding",
+    "city": "Kisumu",
+    "status": "Inactive",
+    "jobType": "Full time",
+    "description": "Solid Welding in Kisumu is not actively hiring at the moment. However, when positions become available, we offer full-time opportunities for skilled Welders to work on various welding projects and contribute to the fabrication process."
+  },
+  {
+    "post": "Carpenter",
+    "companyName": "Craft Woodworks",
+    "city": "Nairobi",
+    "status": "Actively recruiting",
+    "jobType": "Remote",
+    "description": "Craft Woodworks is actively recruiting for remote Carpenter positions in Nairobi. Join our team and showcase your woodworking skills by crafting high-quality furniture and structures from the comfort of your own workshop."
+  },
+  {
+    "post": "Plumber",
+    "companyName": "Leak Fixers",
+    "city": "Nakuru",
+    "status": "Active",
+    "jobType": "Part-time",
+    "description": "Leak Fixers is currently hiring part-time Plumbers in Nakuru. If you have expertise in identifying and fixing plumbing leaks, join our team and help our customers resolve their plumbing issues on a flexible basis."
+  },
+  {
+    "post": "Electrician",
+    "companyName": "Bright Sparks",
+    "city": "Machakos",
+    "status": "Inactive",
+    "jobType": "Full time",
+    "description": "Bright Sparks in Machakos is not actively hiring for Electricians at the moment. However, we offer full-time opportunities for skilled Electricians to work on electrical installations and provide reliable electrical services."
+  },
+  {
+    "post": "Carpenter",
+    "companyName": "Crafted Homes",
+    "city": "Kericho",
+    "status": "Actively recruiting",
+    "jobType": "Full time",
+    "description": "Crafted Homes is actively recruiting for full-time Carpenters in Kericho. Join our team and contribute to the construction of beautiful homes by applying your carpentry skills in the assembly, installation, and repair of wooden structures."
+  },
+  {
+    "post": "Plumber",
+    "companyName": "Flow Solutions",
+    "city": "Eldoret",
+    "status": "Pending",
+    "jobType": "Internship",
+    "description": "Flow Solutions in Eldoret has a pending internship opportunity for Plumbers. This internship will provide valuable hands-on experience in plumbing systems and installations. Develop your skills under the guidance of experienced professionals."
+  },
+  {
+    "post": "Welder",
+    "companyName": "Metal Works",
+    "city": "Nairobi",
+    "status": "Active",
+    "jobType": "Full time",
+    "description": "Metal Works is currently hiring full-time Welders in Nairobi. Join our team and utilize your welding expertise to fabricate metal components, perform repairs, and contribute to the production of high-quality metal products."
+  },
+  {
+    "post": "Electrician",
+    "companyName": "Power Tech",
+    "city": "Mombasa",
+    "status": "Inactive",
+    "jobType": "Part-time",
+    "description": "Power Tech in Mombasa is not actively hiring Electricians at the moment. However, we occasionally offer part-time opportunities for skilled Electricians to handle electrical installations and repairs as needed."
+  }
+]

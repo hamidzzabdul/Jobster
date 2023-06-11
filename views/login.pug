@@ -1,0 +1,37 @@
+extends base
+
+block content 
+    main.login-page
+        img.logo(src="./assets/logo.svg", alt="logo" )
+        h1.title login 
+        form.form-control
+            label(for="email") 
+                span Email 
+                input#email(type="email")
+            label(for="password") 
+                span password 
+                input#password(type="password")
+            button.submit Login 
+            .dont-have-an-account 
+                p 
+                | not a member yet? 
+                a.register Register
+         
+    main.signup-page.inactive
+        img.logo(src="./assets/logo.svg", alt="logo")
+        h1.title sign-up
+        form.form-control
+            label(for="name") 
+                span name 
+                input(type="name")
+            label(for="email") 
+                span Email 
+                input(type="email")
+            label(for="password") 
+                span password 
+                input(type="password")
+            button.submit sign-up 
+            .dont-have-an-account 
+                p 
+                | Already a member  
+                a.login login 

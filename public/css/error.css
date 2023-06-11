@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Poppins:wght@300;400;500;700;800&display=swap");
+
+:root {
+  --primary-color: #3b82f6;
+  --body-color: #f0f4f8;
+  --text-color: #102a43;
+  --primary-font: "Lexend", sans-serif;
+  --secondary-font: "Poppins", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    font-family: var(--primary-font);
+    background-color: beige;
+}
+.alert-container{
+    width: 300px;
+    height: 70px;
+    margin: 20px auto;
+    padding: 1rem 0;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: -200px;
+    transition: all 800ms ease;
+    cursor: pointer;
+}
+
+.line{
+    position: absolute;
+    bottom: 0;
+    background-color: #07bc0c;
+    width: 100%;
+    height: 5px;
+    animation: alertAnimation 5s forwards;
+}
+
+.active{
+    top: 0px;
+}
+
+
+@keyframes alertAnimation {
+    0% {
+      width: 100%;
+      /* Full width */
+    }
+    100% {
+      width: 0; /* No width */
+    }
+  }
+.alert-container>svg{
+    width: 15px;
+    fill: #9fb3c8;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.alert{
+    padding-left: 1rem;
+}
+
+.alert>svg{
+    fill: #07bc0c;
+    width: 20px;
+}
+.alert{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #9fb3c8;
+}
