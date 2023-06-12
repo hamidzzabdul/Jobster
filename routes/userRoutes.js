@@ -12,7 +12,7 @@ router.use(AuthController.protect)
 
 
 
-router.use(AuthController.restrictTo('admin'))
+// router.use(AuthController.restrictTo('admin'))
 router
   .route("/")
   .get(userController.getAllUsers)

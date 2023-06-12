@@ -1,21 +1,23 @@
 const express = require("express");
 
 const jobController = require("../controllers/JobController");
-
+const authcontroller = require("../controllers/authController");
 const router = express.Router();
-
-
 
 // crud routers
 router
-    .route("/")
-    .get(jobController.getAllJobs)
-    .post(jobController.createJobs)
+  .route("/")
+  .get(jobController.getAllJobs)
+  .post(
+    authcontroller.protect,
+    authcontroller.isLoggedIn,
+    authcontroller.restrictTo("admin", "recruiter"),
+    jobController.createJobs
+  );
 router
-    .route('/:id')
-    .get(jobController.getOneJob)
-    .patch(jobController.updateJob)
-    .delete(jobController.deleteJob)
-
+  .route("/:id")
+  .get(jobController.getOneJob)
+  .patch(jobController.updateJob)
+  .delete(jobController.deleteJob);
 
 module.exports = router;

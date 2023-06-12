@@ -1,29 +1,27 @@
 extends ../dashboard 
 
 block content 
-    #content
-        .user-profile
-            h3 Profile 
-            form.profile-controller
-                label(for="name") 
-                    span Name
-                    input(type="text" )
-                label(for="lastname") 
-                    span last Name
-                    input(type="text" )
-                label.email-grid-colspan(for="email") 
-                    span Email 
-                    input(type="email")
-                label(for="password") 
-                    span Password 
-                    input(type="password" placeholder="***********")
-                label(for="retype-password") 
-                    span Re-type Password 
-                    input(type="password" placeholder="***********")                     
-                .upload.email-grid-colspan 
-                    label(for="profile-upload") 
-                        input(type="file" name="profile" id="profile-upload")
-                .btn-controller.email-grid-colspan 
-                    button.confirm-btn(type="button") Confirm Changes
-                    button.delete-account-btn(type="button") Delete Account
-                    
+    .user-profile
+        h3 Profile 
+        form.profile-controller
+            label(for="name") 
+                span Name
+                input(type="text" value=`${}`)
+            label(for="lastname") 
+                span last Name
+                input(type="text" )
+            label.email-grid-colspan(for="email") 
+                span Email 
+                input(type="email")
+            label(for="password") 
+                span Password 
+                input(type="password" placeholder="***********")
+            label(for="retype-password") 
+                span Re-type Password 
+                input(type="password" placeholder="***********")                     
+            .upload.email-grid-colspan 
+                label(for="profile-upload") 
+                    input(type="file" name="profile" id="profile-upload")
+            .btn-controller.email-grid-colspan 
+                button.confirm-btn(type="button") Confirm Changes
+                button.delete-account-btn(type="button") Delete Account

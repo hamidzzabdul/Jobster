@@ -37,9 +37,9 @@ const sendErrorDev = (err, req, res) => {
     });
   }
   // B) Rendered website
-  console.log("Error 💥", err);
+  console.log("Error 💥", err.message);
   return res.status(err.statusCode).render("error", {
-    title: "Something went wron!",
+    title: "Something went wrong!",
     msg: err.message,
   });
 };

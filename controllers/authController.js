@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-const {promisify} = require('util')
+const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
@@ -57,41 +57,47 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.logout = catchAsync(async (req, res, next) => {
   res.cookie("jwt", "loggedOut", {
     expires: new Date(Date.now() + 10 * 1000),
-    httpOnly:true
+    httpOnly: true,
   });
 
-  res.status(200).json({status: 'Success'})
+  res.status(200).json({ status: "Success" });
 });
 
-exports.protect= catchAsync(async(req, res, next) => {
+exports.protect = catchAsync(async (req, res, next) => {
   let token;
-  if(
-    req.header.authorization && 
-    req.headers.authorization.startsWith('Bearer'))
-  {
-    token = req.headers.authorization.split(" ")[1]
-  }else if (req.cookies.jwt){
-    token = req.cookies.jwt
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    token = req.headers.authorization.split("")[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
 
-  if(!token){
-    return next(new AppError('User belonging to this token does not exist', 401))
+  if (!token) {
+    return next(
+      new AppError("You are not logged in! please login to get acces", 401)
+    );
   }
 
   // verify the token
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
-  const currentUser = await User.findById(decoded.id)
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  if(!currentUser){
-    return next(new AppError('User belonging to this token no longer exists', 401))
+  // if user still exists
+  const currentUser = await User.findById(decoded.id);
+
+  if (!currentUser) {
+    return next(
+      new AppError("User belonging to this token no longer exists", 401)
+    );
   }
 
-  req.user = currentUser
-  res.locals.user = currentUser
-  next()
-})
+  req.user = currentUser;
+  res.locals.user = currentUser;
+  next();
+});
 
-exports.isLoggedIn = catchAsync(async (req,res,next) => {
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
     try {
       // 1) verify token
@@ -114,14 +120,14 @@ exports.isLoggedIn = catchAsync(async (req,res,next) => {
     }
   }
   next();
-})
+});
 
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     // roles ['admin', 'lead-guide']. role='user'
     if (!roles.includes(req.user.role)) {
       return next(
-        new AppError('You do not have permission to perform this action', 403)
+        new AppError("You do not have permission to perform this action", 403)
       );
     }
 

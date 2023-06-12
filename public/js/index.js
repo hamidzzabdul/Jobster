@@ -1,10 +1,17 @@
 // imports
 
-import { login,logout } from "./login";
+import { login, logout } from "./login";
+import { addJob } from "./jobs";
 
 // dashboard
 const dashboard = document.querySelector(".nav-bar");
 const hamburger = document.querySelector(".hamburger");
+const logoutBtn = document.querySelector(".logout-btn");
+const registerbtn = document.querySelector(".register");
+const loginbtn = document.querySelector(".login");
+const loginForm = document.querySelector(".login-form");
+const AddJobsForm = document.querySelector(".add-job-form");
+
 if (dashboard) {
   hamburger.addEventListener("click", (e) => {
     const sidebar = document.querySelector(".sidebar");
@@ -46,9 +53,6 @@ if (dashboard) {
   });
 }
 
-const registerbtn = document.querySelector(".register");
-const loginbtn = document.querySelector(".login");
-
 const getRegisterPage = () => {
   const renderedPage = document.querySelectorAll("main");
   renderedPage.forEach((page) => {
@@ -59,9 +63,11 @@ const getRegisterPage = () => {
     }
   });
 };
+
 if (loginbtn) {
   loginbtn.addEventListener("click", getRegisterPage);
 }
+
 if (registerbtn) {
   registerbtn.addEventListener("click", getRegisterPage);
 }
@@ -69,7 +75,7 @@ if (registerbtn) {
 const alertContainer = document.querySelector(".alert-container");
 const line = document.querySelector(".line");
 
-if(alertContainer){
+if (alertContainer) {
   setTimeout(() => {
     line.style.animation = ""; // Remove the animation
     line.style.display = "none";
@@ -77,19 +83,29 @@ if(alertContainer){
   line.style.display = "block";
 }
 
-
-const loginForm  = document.querySelector('.login-form')
-
-
-if(loginForm) {
-  loginForm.addEventListener('submit', e=> {
-    e.preventDefault()
-    const email = document.getElementById('email').value
-    const password = document.getElementById('password').value
-    login(email, password)
-  })
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    login(email, password);
+  });
 }
 
-const logoutBtn = document.querySelector('.logout-btn')
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", logout);
+}
 
-if(logoutBtn) logoutBtn.addEventListener('click', logout)
+if (AddJobsForm) {
+  AddJobsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const post = document.getElementById("post").value;
+    const companyName = document.getElementById("company").value;
+    const city = document.getElementById("city").value;
+    const status = document.querySelector("select[name='status']").value;
+    const jobType = document.querySelector("select[name='type']").value;
+    const description = document.getElementById("description").value;
+
+    addJob(post, companyName, city, status, jobType, description);
+  });
+}

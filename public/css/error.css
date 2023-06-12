@@ -7,76 +7,83 @@
   --primary-font: "Lexend", sans-serif;
   --secondary-font: "Poppins", sans-serif;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.alert-container {
+  width: 320px;
+  height: 70px;
+  padding: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 800ms ease;
+  cursor: pointer;
+  z-index: 4;
 }
 
-body{
-    font-family: var(--primary-font);
-    background-color: beige;
-    position: relative;
-}
-.alert-container{
-    width: 300px;
-    height: 70px;
-    padding: 1rem 0;
-    background-color: #fff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: -100%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    transition: top 800ms ease;
-    cursor: pointer;
+.line {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  animation: alertAnimation 5s forwards;
 }
 
-.line{
-    position: absolute;
-    bottom: 0;
-    background-color: #07bc0c;
-    width: 100%;
-    height: 5px;
-    animation: alertAnimation 5s forwards;
+.line.success {
+  background-color: #07bc0c;
+}
+.line.error {
+  background-color: #e74c3c;
 }
 
-.active{
-  top: 0;
+.alert-container.active {
+  top: 100px;
 }
-
 
 @keyframes alertAnimation {
-    0% {
-      width: 100%;
-      /* Full width */
-    }
-    100% {
-      width: 0; /* No width */
-    }
+  0% {
+    width: 100%;
+    /* Full width */
   }
-.alert-container>svg{
-    width: 15px;
-    fill: #9fb3c8;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  100% {
+    width: 0; /* No width */
+  }
 }
-.alert{
-    padding-left: 1rem;
+.alert-container > svg {
+  width: 18px;
+  fill: #9fb3c8;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 300ms ease;
 }
 
-.alert>svg{
-    fill: #07bc0c;
-    width: 20px;
+.alert-container > svg:hover {
+  color: #0000;
 }
-.alert{
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    color: #9fb3c8;
+.alert {
+  padding-left: 1rem;
+}
+
+.alert > svg {
+  width: 20px;
+}
+
+.alert.success > svg {
+  fill: #07bc0c;
+}
+.alert.error > svg {
+  fill: #e74c3c;
+}
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #757575;
 }

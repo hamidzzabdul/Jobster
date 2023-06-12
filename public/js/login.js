@@ -13,15 +13,13 @@ export const login = async(email, password)=> {
             }
         })
         if(res.data.status === 'Success'){
-            showAlert('Success', "Logged in Successfully")
-            console.log("Logged in successfully")
+            showAlert('success', "Logged in Successfully")
             window.setTimeout(()=> {
-                location.assign('')
-            }, 5000)
+                location.assign('/dashboard/stats')
+            }, 4000)
         }
     } catch (error) {
-        console.log(error.response.data)
-        showAlert("Error", error.response.data.message)
+        showAlert("error", error.response.data.message)
     }   
 }
 
@@ -33,6 +31,6 @@ export const logout  =async ()=> {
         });
         if((res.data.status === "Success")) location.assign("/")
     } catch (error) {
-        console.log(error.response)
+        console.log(error.message)
     }
 }
