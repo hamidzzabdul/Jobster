@@ -6,19 +6,19 @@ block content
         form.profile-controller
             label(for="name") 
                 span Name
-                input(type="text" value=`${}`)
+                input(type="text" value=`${user.name}`)
             label(for="lastname") 
                 span last Name
-                input(type="text" )
+                input(type="text" placeholder='Add lastname')
             label.email-grid-colspan(for="email") 
                 span Email 
-                input(type="email")
+                input(type="email" value=`${user.email}`)
             label(for="password") 
                 span Password 
-                input(type="password" placeholder="***********")
+                input(type="password" placeholder='••••••••')
             label(for="retype-password") 
                 span Re-type Password 
-                input(type="password" placeholder="***********")                     
+                input(type="password" placeholder='••••••••')                     
             .upload.email-grid-colspan 
                 label(for="profile-upload") 
                     input(type="file" name="profile" id="profile-upload")

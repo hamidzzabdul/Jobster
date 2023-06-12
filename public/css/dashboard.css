@@ -800,5 +800,6 @@ header > label > span:nth-child(2) {
 .upload {
   display: flex;
   flex-direction: column;
+  width: 200px;
   gap: 1rem;
 }

@@ -9,7 +9,6 @@ router
   .route("/")
   .get(jobController.getAllJobs)
   .post(
-    authcontroller.protect,
     authcontroller.isLoggedIn,
     authcontroller.restrictTo("admin", "recruiter"),
     jobController.createJobs
