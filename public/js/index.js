@@ -97,15 +97,30 @@ if (logoutBtn) {
 }
 
 if (AddJobsForm) {
+  let post = document.getElementById("post");
+  let companyName = document.getElementById("company");
+  let city = document.getElementById("city");
+  let status = document.querySelector("select[name='status']");
+  let jobType = document.querySelector("select[name='type']");
+  let description = document.getElementById("description");
   AddJobsForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const post = document.getElementById("post").value;
-    const companyName = document.getElementById("company").value;
-    const city = document.getElementById("city").value;
-    const status = document.querySelector("select[name='status']").value;
-    const jobType = document.querySelector("select[name='type']").value;
-    const description = document.getElementById("description").value;
-
-    addJob(post, companyName, city, status, jobType, description);
+    addJob(
+      post.value,
+      companyName.value,
+      city.value,
+      status.value,
+      jobType.value,
+      description
+    );
+  });
+  const clearbtn = document.querySelector(".clear-btn");
+  clearbtn.addEventListener("click", (e) => {
+    post.value = "";
+    companyName.value = "";
+    city.value = "";
+    status.selectedIndex = 0;
+    jobType.selectedIndex = 0;
+    description.value = "";
   });
 }
