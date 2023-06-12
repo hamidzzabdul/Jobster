@@ -25,13 +25,12 @@ block content
             p.num-of-jobs=`${result} jobs found `
             .jobs 
                 each job in jobs 
-                    .job-wrapper
+                    form.job-wrapper(data-jobid=`${job.id}`)
                         .company 
                             span A 
                             label
                                 p.job-post= job.post  
                                 p.company-name= job.companyName  
-                        .line 
                         .job-info 
                             label(for="city") 
                                 span.job-icon 
@@ -47,7 +46,7 @@ block content
                                 span#job-des= job.jobType 
                             label.interview(for="status") 
                                 span#job-des=job.status
-                        - if (user.role === 'admin')
+                        - if (user.role === 'admin' || user.role === 'recruiter')
                             .buttons 
-                                button.edit edit 
+                                button.edit(type="button") edit 
                                 button.delete delete 

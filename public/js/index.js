@@ -1,7 +1,7 @@
 // imports
 
 import { login, logout } from "./login";
-import { addJob } from "./jobs";
+import { addJob, deleteJobs } from "./jobs";
 
 // dashboard
 const dashboard = document.querySelector(".nav-bar");
@@ -73,9 +73,9 @@ if (registerbtn) {
 }
 
 const alertContainer = document.querySelector(".alert-container");
-const line = document.querySelector(".line");
 
 if (alertContainer) {
+  const line = document.querySelector(".line");
   setTimeout(() => {
     line.style.animation = ""; // Remove the animation
     line.style.display = "none";
@@ -122,5 +122,16 @@ if (AddJobsForm) {
     status.selectedIndex = 0;
     jobType.selectedIndex = 0;
     description.value = "";
+  });
+}
+
+const jobForms = document.querySelectorAll(".job-wrapper");
+if (jobForms) {
+  jobForms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      const jobId = form.dataset.jobid;
+      e.preventDefault();
+      deleteJobs(jobId);
+    });
   });
 }

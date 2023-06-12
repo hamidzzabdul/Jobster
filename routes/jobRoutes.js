@@ -13,10 +13,11 @@ router
     authcontroller.restrictTo("admin", "recruiter"),
     jobController.createJobs
   );
+
 router
   .route("/:id")
   .get(jobController.getOneJob)
   .patch(jobController.updateJob)
-  .delete(jobController.deleteJob);
+  .delete(authcontroller.protect, jobController.deleteJob);
 
 module.exports = router;
