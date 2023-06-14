@@ -22,7 +22,7 @@
   transform: translate(-50%, -50%);
   transition: top 800ms ease;
   cursor: pointer;
-  z-index: 4;
+  z-index: 99999999;
 }
 
 .line {

@@ -1,7 +1,7 @@
 // imports
 
 import { login, logout } from "./login";
-import { addJob, deleteJobs } from "./jobs";
+import { addJob, deleteJobs, updateJob } from "./jobs";
 
 // dashboard
 const dashboard = document.querySelector(".nav-bar");
@@ -11,6 +11,10 @@ const registerbtn = document.querySelector(".register");
 const loginbtn = document.querySelector(".login");
 const loginForm = document.querySelector(".login-form");
 const AddJobsForm = document.querySelector(".add-job-form");
+const overlay = document.querySelector(".overlay");
+const jobForms = document.querySelectorAll(".job-wrapper");
+const alertContainer = document.querySelector(".alert-container");
+const editForm = document.querySelector(".edit-job-form");
 
 if (dashboard) {
   hamburger.addEventListener("click", (e) => {
@@ -72,8 +76,6 @@ if (registerbtn) {
   registerbtn.addEventListener("click", getRegisterPage);
 }
 
-const alertContainer = document.querySelector(".alert-container");
-
 if (alertContainer) {
   const line = document.querySelector(".line");
   setTimeout(() => {
@@ -111,7 +113,7 @@ if (AddJobsForm) {
       city.value,
       status.value,
       jobType.value,
-      description
+      description.value
     );
   });
   const clearbtn = document.querySelector(".clear-btn");
@@ -125,8 +127,15 @@ if (AddJobsForm) {
   });
 }
 
-const jobForms = document.querySelectorAll(".job-wrapper");
+const closePopUp = () => {
+  overlay.addEventListener("click", (e) => {
+    overlay.style.display = "none";
+    editForm.classList.add("inactive");
+  });
+};
+
 if (jobForms) {
+  console.log("hello world");
   jobForms.forEach((form) => {
     form.addEventListener("submit", (e) => {
       const jobId = form.dataset.jobid;
@@ -134,4 +143,56 @@ if (jobForms) {
       deleteJobs(jobId);
     });
   });
+  const editBtn = document.querySelectorAll(".edit-popup");
+  const position = document.querySelector(".job-post").textContent;
+  const name = document.querySelector(".company-name").textContent;
+  const location = document.querySelector(".location").textContent;
+  const type = document.querySelector(".type").textContent;
+  const jobStatus = document.querySelector(".status").textContent;
+
+  editBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const jobId = btn.dataset.jobid;
+      editForm.classList.remove("inactive");
+      overlay.style.display = "block";
+      let post = document.getElementById("post");
+      let companyName = document.getElementById("company");
+      let city = document.getElementById("city");
+      let status = document.querySelector("select[name='status']");
+      let jobType = document.querySelector("select[name='type']");
+      // let description = document.getElementById("description");
+
+      post.value = position;
+      companyName.value = name;
+      city.value = location;
+      status.selectedIndex = jobStatus;
+      jobType.selectedIndex = type;
+
+      // onsubmit
+      editForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        updateJob(
+          jobId,
+          post.value,
+          companyName.value,
+          city.value,
+          status.value,
+          jobType.value
+        );
+        setTimeout(() => {
+          closePopUp();
+        }, 3000);
+      });
+      const clearbtn = document.querySelector(".clear-btn");
+      clearbtn.addEventListener("click", (e) => {
+        post.value = "";
+        companyName.value = "";
+        city.value = "";
+        status.selectedIndex = 0;
+        jobType.selectedIndex = 0;
+        description.value = "";
+      });
+    });
+  });
+  closePopUp();
 }

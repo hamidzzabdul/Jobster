@@ -49,3 +49,34 @@ export const deleteJobs = async (jobId) => {
     showAlert("error", error);
   }
 };
+
+export const updateJob = async (
+  jobId,
+  post,
+  companyName,
+  city,
+  status,
+  jobType
+) => {
+  try {
+    const res = await axios({
+      method: "PATCH",
+      url: `/api/v1/jobs/${jobId}`,
+      data: {
+        post,
+        companyName,
+        city,
+        status,
+        jobType,
+      },
+    });
+
+    if (res.data.status === "Successful") {
+      console.log("update succesfull");
+      showAlert("success", "update successfull");
+      location.reload(true);
+    }
+  } catch (error) {
+    showAlert("error", error.message);
+  }
+};

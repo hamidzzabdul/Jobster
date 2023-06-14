@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/edit.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form class="edit-job-form">
+        <h1 class="title">Edit Jobs</h1>
+        <div class="form-inputs">
+            <label for="postion">
+                <span> Position</span>
+                <input type="text" id="post">
+            </label>
+            <label for="company">
+                <span> company</span>
+                <input type="text" id="company">
+            </label>
+            <label for="job-location">
+                <span> job-location</span>
+                <input type="text" id="#city">
+            </label>
+            <label for="status">
+                <span> status</span>
+                <select name="status">
+                    <option disabled selected>status</option>
+                    <option value="pending">pending</option>
+                    <option value="interview">interview</option>
+                </select>
+            </label>
+            <label for="status">
+                <span> status</span>
+                <select name="job-type">
+                    <option disabled selected>Type</option>
+                    <option value="full-time">full-time</option>
+                    <option value="part-time">part-time</option>
+                </select>
+            </label>
+            <label for="description">
+                <span>Description</span>
+                <input type="text" id="description">
+            </label>
+        </div>
+        <div class="btn-container">
+            <button class="clear-btn"> clear</button>
+            <button class="submit-btn">Submit</button>
+        </div>
+    </form>
+</body>
+
+</html>
