@@ -13,6 +13,11 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 html {
   text-transform: capitalize;
 }
@@ -21,6 +26,7 @@ body {
   background: #f0f4f8;
   font-family: var(--primary-font);
   position: relative;
+  height: 100vh;
 }
 
 .overlay {
@@ -214,15 +220,21 @@ section {
 main {
   width: 100%;
   height: 100vh;
+  overflow: scroll;
   transition: width 300ms ease-in-out, margin-left 300ms ease-in-out;
 }
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
 main.side-active {
   width: calc(100% - 250px);
   margin-left: 250px;
 }
 .content-wrapper {
   width: 90%;
-  margin: 0px auto;
+  margin: 0rem auto;
   padding: 1rem;
 }
 
@@ -409,6 +421,26 @@ li > p {
   margin-top: 10px;
 }
 
+.loading {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 5px solid var(--body-color);
+  border-top-color: var(--primary-color);
+  animation: spin 800ms infinite linear;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .job-wrapper {
   background-color: #fff;
   padding: 1rem;
@@ -419,14 +451,19 @@ li > p {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 300ms ease;
-  cursor: pointer;
   text-decoration: none;
   color: #000;
 }
 
-.job-wrapper:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
-    0 2px 4px -1px rgba(0, 0, 0, 0.04);
+.read-more {
+  width: 85px;
+  padding-bottom: 2px;
+  color: #627d98;
+  transition: 300ms all ease;
+  cursor: pointer;
+}
+.read-more:hover {
+  color: #000;
 }
 @media (max-width: 792px) {
   .jobs {
@@ -496,18 +533,17 @@ li > p {
 
 #job-des {
   font-size: 0.875rem;
-  font-weight: 200px;
 }
 
 .interview {
   background-color: rgb(224, 232, 249);
-  width: 6rem;
+  width: 9rem;
   padding: 0.5rem;
   border-radius: 5px;
   color: var(--primary-color);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
 }
 
 .buttons {

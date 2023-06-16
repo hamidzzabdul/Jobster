@@ -22,8 +22,11 @@ block content
                             option(disabled selected) Sort By
                             option(value="Full time") latest Jobs 
                             option(value="Part time") oldest 
-            p.num-of-jobs=`${result} jobs found `
-            .jobs 
+            p.num-of-jobs
+                span#numJobs= result 
+                |  jobs found 
+            .loading 
+            .jobs#jobs-container 
                 each job in jobs 
                     div.job-wrapper( data-jobid=`${job.id}`)
                         .company 
@@ -46,11 +49,11 @@ block content
                                 span#job-des.type= job.jobType 
                             label.interview(for="status") 
                                 span#job-des.status=job.status
+                        a.read-more(href=`/dashboard/all-jobs/job/${job.id}`) Read more
                         - if (user.role === 'admin' || user.role === 'recruiter')
                             .buttons 
                                 button.edit.edit-popup(type="button" data-jobid=`${job.id}`) edit 
                                 button.delete delete
-                        a(href=`/dashboard/all-jobs/job/${job.id}`) Read more
             .overlay        
             form.edit-job-form.inactive
                 h1.title Edit job

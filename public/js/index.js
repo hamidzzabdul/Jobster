@@ -229,3 +229,54 @@ if (job) {
     });
   }
 }
+
+// Searching
+
+const allJobsPage = document.querySelector(".all-jobs-container");
+const jobsContainer = document.querySelector("#jobs-container");
+if (allJobsPage) {
+  const numOfJobs = document.querySelector("#numJobs");
+  const searchBar = document.querySelector("#search");
+  const loading = document.querySelector(".loading");
+  searchBar.addEventListener("input", () => {
+    const searchQuery = searchBar.value.toLowerCase();
+    const jobs = Array.from(jobsContainer.querySelectorAll(".job-wrapper"));
+    let count = 0;
+    loading.style.display = "block";
+    jobsContainer.style.display = "none";
+    setTimeout(() => {
+      jobsContainer.style.display = "";
+      jobs.forEach((job) => {
+        const title = job.querySelector(".job-post").textContent.toLowerCase();
+        const companyName = job
+          .querySelector(".company-name")
+          .textContent.toLowerCase();
+        if (title.includes(searchQuery) || companyName.includes(searchQuery)) {
+          job.style.display = ""; // Show the job
+          count++;
+        } else {
+          job.style.display = "none"; // Hide the job
+        }
+      });
+
+      loading.style.display = "none";
+      numOfJobs.textContent = `${count}`;
+      if (numOfJobs.textContent === "0") {
+        const alert = document.createElement("p");
+        alert.textContent = "No jobs found with that name";
+        const existingAlerts = jobsContainer.querySelectorAll(".alert");
+        existingAlerts.forEach((existingAlert) => {
+          existingAlert.remove();
+        });
+
+        alert.classList.add("alert"); // Add a class to the alert element for styling purposes
+        jobsContainer.appendChild(alert);
+      } else {
+        const existingAlerts = jobsContainer.querySelectorAll(".alert");
+        existingAlerts.forEach((existingAlert) => {
+          existingAlert.remove();
+        });
+      }
+    }, 800);
+  });
+}
