@@ -80,3 +80,10 @@ export const updateJob = async (
     showAlert("error", error.message);
   }
 };
+
+// export const getJob = async (jobId) => {
+//   const res = await axios({
+//     method: "GET",
+//     url: "/api/",
+//   });
+// };

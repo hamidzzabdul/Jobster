@@ -2,7 +2,7 @@ extends base
 
 block content 
     main.login-page
-        img.logo(src="./assets/logo.svg", alt="logo" )
+        img.logo(src="./assets/logo.svg" alt="logo" )
         h1.title login 
         form.form-control.login-form
             label(for="email") 
@@ -16,20 +16,23 @@ block content
                 p 
                 | not a member yet? 
                 a.register Register
-         
+
     main.signup-page.inactive
-        img.logo(src="./assets/logo.svg", alt="logo")
+        img.logo(src="./assets/logo.svg" alt="logo")
         h1.title sign-up
-        form.form-control
+        form.form-control.signup-form
             label(for="name") 
                 span name 
-                input(type="name")
+                input#signup-name(type="text" )
             label(for="email") 
                 span Email 
-                input(type="email")
-            label(for="password") 
+                input#signup-email(type="email" )
+            label(for="password" ) 
                 span password 
-                input(type="password")
+                input#signup-password(type="password" )
+            label(for="password" ) 
+                span Re-type password 
+                input#signup-passwordConfirm(type="password")
             button.submit sign-up 
             .dont-have-an-account 
                 p 

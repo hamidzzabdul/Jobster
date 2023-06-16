@@ -6,7 +6,10 @@ html
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet' href='/css/dashboard.css')
         link(rel='stylesheet' href='/css/error.css')
-        link(rel='stylesheet' href='/css/edit.css')
+        if title === 'job'
+            link(rel='stylesheet' href='/css/job.css')
+        if title  === "alljobs"
+            link(rel='stylesheet' href='/css/edit.css')
         link(rel='shortcut icon' type='image/png' href='/assets/page-icon.png')
         link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
         <script src="https://use.fontawesome.com/cb6817568b.js" defer></script>
@@ -18,4 +21,4 @@ html
         main.side-active 
             block content
 
-    script(src="../js/bundle.js" )
+    script(src="/js/bundle.js" )

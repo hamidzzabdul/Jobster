@@ -25,7 +25,7 @@ block content
             p.num-of-jobs=`${result} jobs found `
             .jobs 
                 each job in jobs 
-                    form.job-wrapper(data-jobid=`${job.id}`)
+                    div.job-wrapper( data-jobid=`${job.id}`)
                         .company 
                             span A 
                             label
@@ -50,7 +50,8 @@ block content
                             .buttons 
                                 button.edit.edit-popup(type="button" data-jobid=`${job.id}`) edit 
                                 button.delete delete
-            .overlay
+                        a(href=`/dashboard/all-jobs/job/${job.id}`) Read more
+            .overlay        
             form.edit-job-form.inactive
                 h1.title Edit job
                 .form-inputs 

@@ -1,6 +1,6 @@
 // imports
 
-import { login, logout } from "./login";
+import { login, logout, signUp } from "./login";
 import { addJob, deleteJobs, updateJob } from "./jobs";
 
 // dashboard
@@ -10,6 +10,7 @@ const logoutBtn = document.querySelector(".logout-btn");
 const registerbtn = document.querySelector(".register");
 const loginbtn = document.querySelector(".login");
 const loginForm = document.querySelector(".login-form");
+const signupForm = document.querySelector(".signup-form");
 const AddJobsForm = document.querySelector(".add-job-form");
 const overlay = document.querySelector(".overlay");
 const jobForms = document.querySelectorAll(".job-wrapper");
@@ -93,6 +94,18 @@ if (loginForm) {
     login(email, password);
   });
 }
+if (signupForm) {
+  signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("signup-name").value;
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+    const passwordConfirm = document.getElementById(
+      "signup-passwordConfirm"
+    ).value;
+    signUp(name, email, password, passwordConfirm);
+  });
+}
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", logout);
@@ -127,15 +140,7 @@ if (AddJobsForm) {
   });
 }
 
-const closePopUp = () => {
-  overlay.addEventListener("click", (e) => {
-    overlay.style.display = "none";
-    editForm.classList.add("inactive");
-  });
-};
-
 if (jobForms) {
-  console.log("hello world");
   jobForms.forEach((form) => {
     form.addEventListener("submit", (e) => {
       const jobId = form.dataset.jobid;
@@ -143,25 +148,27 @@ if (jobForms) {
       deleteJobs(jobId);
     });
   });
-  const editBtn = document.querySelectorAll(".edit-popup");
-  const position = document.querySelector(".job-post").textContent;
-  const name = document.querySelector(".company-name").textContent;
-  const location = document.querySelector(".location").textContent;
-  const type = document.querySelector(".type").textContent;
-  const jobStatus = document.querySelector(".status").textContent;
+  const editBtn = document.querySelectorAll(".edit");
 
   editBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const jobId = btn.dataset.jobid;
       editForm.classList.remove("inactive");
       overlay.style.display = "block";
+
+      const jobWrapper = document.querySelector(`[data-jobid="${jobId}"]`);
+      const position = jobWrapper.querySelector(".job-post").textContent;
+      const name = jobWrapper.querySelector(".company-name").textContent;
+      const location = jobWrapper.querySelector(".location").textContent;
+      const type = jobWrapper.querySelector(".type").value;
+      const jobStatus = jobWrapper.querySelector(".status").value;
+
       let post = document.getElementById("post");
       let companyName = document.getElementById("company");
       let city = document.getElementById("city");
       let status = document.querySelector("select[name='status']");
       let jobType = document.querySelector("select[name='type']");
       // let description = document.getElementById("description");
-
       post.value = position;
       companyName.value = name;
       city.value = location;
@@ -194,5 +201,31 @@ if (jobForms) {
       });
     });
   });
-  closePopUp();
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      overlay.style.display = "none";
+      editForm.classList.add("inactive");
+    });
+  }
+}
+
+// get job page
+
+const job = document.querySelector(".job-container");
+const bgOverlay = document.querySelector(".bg-overlay");
+
+if (job) {
+  const applyModal = document.querySelector(".apply-for-job");
+  const applyBtn = document.querySelector(".apply");
+  applyBtn.addEventListener("click", () => {
+    applyModal.classList.remove("inactive");
+    bgOverlay.style.display = "block";
+  });
+
+  if (bgOverlay) {
+    bgOverlay.addEventListener("click", (e) => {
+      bgOverlay.style.display = "none";
+      applyModal.classList.add("inactive");
+    });
+  }
 }

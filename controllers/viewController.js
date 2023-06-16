@@ -57,3 +57,15 @@ exports.getme = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.getJob = async (req, res) => {
+  try {
+    const doc = await Job.findById(req.params.id);
+    res.status(200).render("partials/job", {
+      title: "job",
+      job: doc,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
