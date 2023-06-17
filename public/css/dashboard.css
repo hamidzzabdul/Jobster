@@ -663,7 +663,18 @@ li > p {
   display: grid;
   gap: 1rem;
 }
-
+.my-jobs-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.my-jobs-container > .title {
+  font-size: 1.3rem;
+  margin: 30px auto;
+  text-align: center;
+  color: #627d98;
+}
 header {
   display: flex;
   gap: 3rem;

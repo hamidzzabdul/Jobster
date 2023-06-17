@@ -7,7 +7,8 @@ export const addJob = async (
   city,
   status,
   jobType,
-  description
+  description,
+  userId
 ) => {
   try {
     const res = await axios({
@@ -20,6 +21,7 @@ export const addJob = async (
         status,
         jobType,
         description,
+        createdBy: userId,
       },
     });
 
@@ -28,7 +30,7 @@ export const addJob = async (
       console.log("successfully created");
     }
   } catch (error) {
-    showAlert("error", "Please make sure all the fields are filled");
+    showAlert("error", error.message);
   }
 };
 

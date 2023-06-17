@@ -4,7 +4,7 @@ block content
   #content
     .add-job#content     
       h1.title Add Job 
-      form.add-job-form
+      form.add-job-form(data-userid=`${user.id}`)
         label(for="postion") 
           span Position 
           input#post(type="text")

@@ -78,3 +78,17 @@ exports.getApplication = async (req, res) => {
     console.log(error);
   }
 };
+
+exports.getMyJobs = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const doc = await Job.find({ createdBy: userId });
+
+    res.status(200).render("partials/myjobs", {
+      title: "My-jobs",
+      jobs: doc,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

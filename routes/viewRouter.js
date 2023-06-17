@@ -39,6 +39,13 @@ router.post(
   applicationController.uploadResume,
   applicationController.createApplication
 );
-router.get("/dashboard/profile", authController.protect, viewController.getme);
 
+router.get(
+  "/dashboard/my-jobs",
+  authController.protect,
+  authController.restrictTo("recruiter"),
+  viewController.getMyJobs
+);
+
+router.get("/dashboard/profile", authController.protect, viewController.getme);
 module.exports = router;

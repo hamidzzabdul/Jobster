@@ -25,7 +25,8 @@ block content
         .about-job 
             h3 About Job
             span.description= job.description  
-        button.apply Apply
+        if (user.role === "user")
+            button.apply Apply
 
         .bg-overlay 
         form.apply-for-job.inactive(enctype="multipart/form-data")

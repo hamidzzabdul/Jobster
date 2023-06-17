@@ -128,13 +128,15 @@ if (AddJobsForm) {
   let description = document.getElementById("description");
   AddJobsForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    const userId = AddJobsForm.dataset.userid;
     addJob(
       post.value,
       companyName.value,
       city.value,
       status.value,
       jobType.value,
-      description.value
+      description.value,
+      userId
     );
   });
   const clearbtn = document.querySelector(".clear-btn");
@@ -225,10 +227,12 @@ const bgOverlay = document.querySelector(".bg-overlay");
 if (job) {
   const applyModal = document.querySelector(".apply-for-job");
   const applyBtn = document.querySelector(".apply");
-  applyBtn.addEventListener("click", () => {
-    applyModal.classList.remove("inactive");
-    bgOverlay.style.display = "block";
-  });
+  if (applyBtn) {
+    applyBtn.addEventListener("click", () => {
+      applyModal.classList.remove("inactive");
+      bgOverlay.style.display = "block";
+    });
+  }
 
   if (bgOverlay) {
     bgOverlay.addEventListener("click", (e) => {
