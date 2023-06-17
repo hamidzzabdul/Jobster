@@ -1,7 +1,7 @@
 extends  ../dashboard 
 
 block content 
-    .job-container 
+    .job-container(data-jobid=`${job.id}`, data-userid = `${user.id}`)
         .company 
             span A 
             label
@@ -28,7 +28,7 @@ block content
         button.apply Apply
 
         .bg-overlay 
-        form.apply-for-job.inactive
+        form.apply-for-job.inactive(enctype="multipart/form-data")
             h1 Apply for Job 
             label(for="name") 
                 span Name 
@@ -42,6 +42,6 @@ block content
                 input(type="text" id="phone")
             label(for="resume") 
                 span Upload resume 
-                input(type="file" name="resume" id="resume")
+                input(type="file" name="resume" id="resume" accept=".pdf,.doc,.docx" required)
             button.submit Submit 
 

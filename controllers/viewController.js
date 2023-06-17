@@ -69,3 +69,12 @@ exports.getJob = async (req, res) => {
     console.log(error.message);
   }
 };
+exports.getApplication = async (req, res) => {
+  try {
+    res.status(200).render("partials/application", {
+      title: "application",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

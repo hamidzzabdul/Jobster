@@ -63,3 +63,18 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.becomeRecruiter = catchAsync(async (req, res, next) => {
+  const recruiter = await User.findByIdAndUpdate(
+    req.user.id,
+    { role: "recruiter" },
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      user: recruiter,
+    },
+  });
+});

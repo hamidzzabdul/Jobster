@@ -81,7 +81,7 @@ section {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: var(--primary-color);
   color: #ffff;
   border-radius: 5px;
@@ -100,15 +100,17 @@ section {
 .dropdown-item {
   border-radius: 5px;
   background: #dbeafe;
-  padding: 0.7rem;
+  padding: 0.5rem;
   width: 100%;
-  text-align: center;
+  height: 80px;
   position: absolute;
   top: 45px;
   color: var(--primary-color);
-  font-size: 1.1rem;
   cursor: pointer;
   visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 @media (max-width: 400px) {

@@ -1,8 +1,8 @@
 // imports
 
 import { login, logout, signUp } from "./login";
-import { addJob, deleteJobs, updateJob } from "./jobs";
-
+import { addJob, apply, deleteJobs, updateJob } from "./jobs";
+import { becomeRecruiter } from "./user";
 // dashboard
 const dashboard = document.querySelector(".nav-bar");
 const hamburger = document.querySelector(".hamburger");
@@ -44,6 +44,14 @@ if (dashboard) {
       dropdownIsVisible = false;
     }
   });
+
+  const recruiterBtn = document.querySelector(".become-recruiter");
+  if (recruiterBtn) {
+    recruiterBtn.addEventListener("click", () => {
+      const userId = recruiterBtn.dataset.userid;
+      becomeRecruiter(userId);
+    });
+  }
 
   //side menu items
   const currentURL = window.location.href;
@@ -278,5 +286,24 @@ if (allJobsPage) {
         });
       }
     }, 800);
+  });
+}
+
+// application form
+
+const applicationForm = document.querySelector(".apply-for-job");
+
+if (applicationForm) {
+  applicationForm.addEventListener("submit", (e) => {
+    const jobContainer = document.querySelector(".job-container");
+    e.preventDefault();
+    const jobId = jobContainer.dataset.jobid;
+    const userId = jobContainer.dataset.userid;
+    console.log(jobId, userId);
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phoneNumber = document.getElementById("phone").value;
+    const resumeFile = document.getElementById("resume").files[0];
+    apply(name, email, phoneNumber, resumeFile, jobId, userId);
   });
 }

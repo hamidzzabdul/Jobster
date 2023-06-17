@@ -12,6 +12,9 @@ router.use(AuthController.protect);
 
 router.route("/me", userController.updateMe);
 
+router.use(AuthController.restrictTo("user"));
+router.put("/:id", userController.becomeRecruiter);
+
 router.use(AuthController.restrictTo("admin"));
 router
   .route("/")
@@ -22,4 +25,5 @@ router
   .route("/:id")
   .get(userController.getUser)
   .patch(userController.updateUser);
+
 module.exports = router;

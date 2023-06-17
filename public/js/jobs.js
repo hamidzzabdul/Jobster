@@ -87,3 +87,39 @@ export const updateJob = async (
 //     url: "/api/",
 //   });
 // };
+
+export const apply = async (
+  name,
+  email,
+  phoneNumber,
+  resume,
+  jobId,
+  userId
+) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: "/application",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: {
+        name,
+        email,
+        phoneNumber,
+        resume,
+        jobId,
+        userId,
+      },
+    });
+    if (res.data.status === "success") {
+      showAlert("success", "Applicaition Sent Succefuly");
+      setTimeout(() => {
+        location.assign("/dashboard/stats");
+      }, 3000);
+    }
+  } catch (error) {
+    console.log(error.message);
+    showAlert("error", "oops! something went Wrong");
+  }
+};
