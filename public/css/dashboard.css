@@ -874,28 +874,102 @@ header > label > span:nth-child(2) {
   margin-bottom: 10px;
 }
 .app-container {
-  width: 90%;
+  width: 80%;
   margin: 20px auto;
   padding: 1rem;
 }
 .application-wrapper {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
-
 .app-job-wrapper {
-  background-color: #ffff;
   padding: 1rem;
+  background-color: #fff;
+}
+.app-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.app-info {
-  margin-bottom: 20px;
+.app-info > .company {
+  width: 45%;
 }
-.app-job-wrapper > .about-job > span {
-  font-family: var(--secondary-font);
+
+.app-info > .company > span {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  background-color: #3b82f6;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.company > label > .company-name {
+  color: #627d98;
   font-size: 0.875rem;
-  line-height: 1.5rem;
-  font-weight: 400px;
+}
+
+.application-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.application-status > p {
+  background-color: rgb(100, 122, 203);
+  color: white;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border-radius: 5px;
+}
+.application-status > span {
+  font-size: 0.875rem;
+}
+
+.application-status.accepted > p {
+  background-color: #1ba162 !important;
+}
+
+.application-status.rejected > p {
+  background-color: rgb(216, 69, 69);
+}
+
+.num-of-applicants {
+  margin-left: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.num-of-applicants > p {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.num-of-applicants > span {
+  font-size: 0.875rem;
+}
+.show-all {
+  width: 100px;
+  border: none;
+  color: #fff;
+  background-color: var(--primary-color);
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 300ms ease, transform 300ms ease-in-out;
+}
+
+.show-all > a {
+  text-decoration: none;
+  color: white;
+}
+
+.show-all:hover {
+  background-color: #5998fc;
+  transform: translateY(-4px);
 }

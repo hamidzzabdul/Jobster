@@ -41,6 +41,12 @@ router.post(
 );
 
 router.get(
+  "/application/applicants-review",
+  authController.protect,
+  viewController.getApplicants
+);
+
+router.get(
   "/dashboard/my-jobs",
   authController.protect,
   authController.restrictTo("admin", "recruiter"),

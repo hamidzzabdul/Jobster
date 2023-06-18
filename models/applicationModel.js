@@ -15,6 +15,7 @@ const ApplicationSchema = new mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, "Please provide a valid email"],
       trim: true,
+      unique: false,
     },
     phoneNumber: {
       type: String,

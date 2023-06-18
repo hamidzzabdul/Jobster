@@ -77,13 +77,23 @@ exports.getApplication = async (req, res) => {
   try {
     const applications = await Application.find({ user: req.user.id });
     const jobId = applications.map((application) => application.job);
-
-    const jobs = await Job.find({ _id: { $in: jobId } });
+    let jobs = [];
+    let jobsApplicants = [];
+    const userRole = req.user.role;
+    if (userRole === "user") {
+      jobs = await Job.find({ _id: { $in: jobId } });
+    } else {
+      jobs = await Job.find({ createdBy: req.user.id });
+      jobsApplicants = await Application.find({
+        job: { $in: jobs.map((job) => job._id) },
+      });
+    }
 
     res.status(200).render("partials/application", {
       title: "application",
       applications,
       jobs,
+      jobsApplicants,
     });
   } catch (error) {
     console.log(error);
@@ -98,6 +108,16 @@ exports.getMyJobs = async (req, res) => {
     res.status(200).render("partials/myjobs", {
       title: "My-jobs",
       jobs: doc,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+exports.getApplicants = async (req, res) => {
+  try {
+    res.status(200).render("partials/applicants", {
+      title: "applicants",
     });
   } catch (error) {
     console.log(error.message);
