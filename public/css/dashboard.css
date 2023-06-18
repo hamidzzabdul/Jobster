@@ -867,3 +867,35 @@ header > label > span:nth-child(2) {
   width: 200px;
   gap: 1rem;
 }
+
+/* applicaitons page */
+
+.app-title {
+  margin-bottom: 10px;
+}
+.app-container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 1rem;
+}
+.application-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.app-job-wrapper {
+  background-color: #ffff;
+  padding: 1rem;
+}
+
+.app-info {
+  margin-bottom: 20px;
+}
+.app-job-wrapper > .about-job > span {
+  font-family: var(--secondary-font);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  font-weight: 400px;
+}

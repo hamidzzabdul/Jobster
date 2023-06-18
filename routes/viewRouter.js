@@ -43,7 +43,7 @@ router.post(
 router.get(
   "/dashboard/my-jobs",
   authController.protect,
-  authController.restrictTo("recruiter"),
+  authController.restrictTo("admin", "recruiter"),
   viewController.getMyJobs
 );
 

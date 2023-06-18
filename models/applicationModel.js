@@ -12,7 +12,6 @@ const ApplicationSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      unique: true,
       lowercase: true,
       validate: [validator.isEmail, "Please provide a valid email"],
       trim: true,
@@ -34,6 +33,10 @@ const ApplicationSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
       required: [true, "Application must belong to a user"],
+    },
+    status: {
+      type: String,
+      default: "pending",
     },
   },
   { timestamps: true }

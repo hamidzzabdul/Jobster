@@ -1,4 +1,5 @@
 const Job = require("../models/jobModel");
+const Application = require("../models/applicationModel");
 const catchAsync = require("../utils/catchAsync");
 
 exports.getLandingPage = async (req, res) => {
@@ -24,9 +25,12 @@ exports.getLoginPage = async (req, res) => {
 // dashboard
 exports.getStats = catchAsync(async (req, res) => {
   const docs = await Job.countDocuments();
+
+  const applications = await Application.find({ user: req.user.id });
   res.status(200).render("partials/stats", {
     title: "stats",
     jobs: docs,
+    applications,
   });
 });
 
@@ -71,8 +75,15 @@ exports.getJob = async (req, res) => {
 };
 exports.getApplication = async (req, res) => {
   try {
+    const applications = await Application.find({ user: req.user.id });
+    const jobId = applications.map((application) => application.job);
+
+    const jobs = await Job.find({ _id: { $in: jobId } });
+
     res.status(200).render("partials/application", {
       title: "application",
+      applications,
+      jobs,
     });
   } catch (error) {
     console.log(error);
