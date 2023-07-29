@@ -1,6 +1,6 @@
 # Jobster - Job Search Web App
 
-![Jobster Preview](Public/assets/jobster.png)
+![Jobster Preview](public/assets/jobster.png)
 
 ## Introduction
 
